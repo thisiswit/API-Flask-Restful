@@ -46,6 +46,24 @@ class Atividades(Base):
         db_session.commit()
 
 
+class Usuarios (Base):
+    __tablename__ = 'Usuarios'
+    login = Column(String, unique=True)
+    id = Column(Integer, primary_key=True)
+    senha = Column(String(20))
+
+    def __repr__(self):
+        return "<Usuario {}>".format(self.login)
+
+    def save(self):
+        db_session.add(self)
+        db_session.commit()
+
+    def delete(self):
+        db_session.add(self)
+        db_session.commit()
+
+
 def init_db():
     Base.metadata.create_all(bind=engine)
 
